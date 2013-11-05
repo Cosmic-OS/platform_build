@@ -889,4 +889,8 @@ include $(BUILD_SYSTEM)/ninja_config.mk
 include $(BUILD_SYSTEM)/soong_config.mk
 endif
 
+## We need to be sure the global selinux policies are included
+## last, to avoid accidental resetting by device configs
+$(eval include vendor/cos/sepolicy/sepolicy.mk)
+
 include $(BUILD_SYSTEM)/dumpvar.mk
