@@ -137,6 +137,10 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
   --backup <boolean>
       Enable or disable the execution of backuptool.sh.
       Disabled by default.
+
+  --override_prop <boolean>
+      Override build.prop items with custom vendor init.
+      Enabled when TARGET_UNIFIED_DEVICE is defined in BoardConfig
 """
 
 from __future__ import print_function
@@ -191,6 +195,7 @@ OPTIONS.extracted_input = None
 OPTIONS.key_passwords = []
 OPTIONS.override_device = 'auto'
 OPTIONS.backuptool = False
+OPTIONS.override_prop = False
 
 METADATA_NAME = 'META-INF/com/android/metadata'
 UNZIP_PATTERN = ['IMAGES/*', 'META/*']
@@ -207,7 +212,10 @@ def AppendAssertions(script, info_dict, oem_dicts=None):
   oem_props = info_dict.get("oem_fingerprint_properties")
   if not oem_props:
     if OPTIONS.override_device == "auto":
-      device = GetBuildProp("ro.product.device", info_dict)
+      if OPTIONS.override_prop:
+        device = GetBuildProp("ro.build.product", info_dict)
+      else:
+        device = GetBuildProp("ro.product.device", info_dict)
     else:
       device = OPTIONS.override_device
     script.AssertDevice(device)
@@ -406,6 +414,11 @@ def WriteFullOTAPackage(input_zip, output_zip):
 
   target_fp = CalculateFingerprint(oem_props, oem_dicts and oem_dicts[0],
                                    OPTIONS.info_dict)
+  if OPTIONS.override_prop:
+    metadata = {
+        "post-timestamp": GetBuildProp("ro.build.date.utc", OPTIONS.info_dict),
+    }
+  else:
   metadata = {
       "post-build": target_fp,
       "pre-device": GetOemProperty("ro.product.device", oem_props,
@@ -645,6 +658,11 @@ def WriteBlockIncrementalOTAPackage(target_zip, source_zip, output_zip):
   if source_oem_props and target_oem_props:
     oem_dicts = _LoadOemDicts(script, recovery_mount_options)
 
+  if OPTIONS.override_prop:
+    metadata = {
+        "ota-type": "BLOCK",
+    }
+  else:
   metadata = {
       "pre-device": GetOemProperty("ro.product.device", source_oem_props,
                                    oem_dicts and oem_dicts[0],
@@ -1368,6 +1386,8 @@ def main(argv):
       OPTIONS.override_device = a
     elif o in ("--backup"):
       OPTIONS.backuptool = bool(a.lower() == 'true')
+    elif o in ("--override_prop"):
+      OPTIONS.override_prop = bool(a.lower() == 'true')
     else:
       return False
     return True
@@ -1401,6 +1421,7 @@ def main(argv):
                                  "extracted_input_target_files=",
                                  "override_device=",
                                  "backup=",
+                                 "override_prop=",
                              ], extra_option_handler=option_handler)
 
   if len(args) != 2:
