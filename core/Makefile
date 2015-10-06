@@ -142,7 +142,7 @@ BUILD_KEYS := dev-keys
 endif
 BUILD_VERSION_TAGS += $(BUILD_KEYS)
 BUILD_VERSION_TAGS := $(subst $(space),$(comma),$(sort $(BUILD_VERSION_TAGS)))
-UBER_KEYS := powered-by-uber-toolchains
+UBER_KEYS := uber
 
 # If the final fingerprint should be different than what was used by the build system,
 # we can allow that too.
