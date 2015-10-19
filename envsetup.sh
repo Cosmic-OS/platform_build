@@ -861,6 +861,7 @@ function gettop
             fi
         fi
     fi
+  export ANDROID_BUILD_TOP=$T
 }
 
 # Return driver for "make", if any (eg. static analyzer)
