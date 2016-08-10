@@ -99,7 +99,8 @@ LOCAL_DISABLE_STRICT := \
 	sensors.flounder \
 	libnvvisualizer \
 	libskia \
-	libiprouteutil
+	libiprouteutil \
+	libmmcamera_interface
 
 LOCAL_FORCE_DISABLE_STRICT := \
 	libziparchive-host \
@@ -127,7 +128,8 @@ LOCAL_FORCE_DISABLE_STRICT := \
 	libc_malloc \
 	sensors.flounder \
 	libnvvisualizer \
-	libiprouteutil
+	libiprouteutil \
+	libmmcamera_interface
 
 DISABLE_STRICT := \
 	-fno-strict-aliasing
