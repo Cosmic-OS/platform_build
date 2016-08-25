@@ -60,7 +60,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGE_OVERLAYS := development/sdk_overlay
 
 PRODUCT_COPY_FILES := \
-	device/sample/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml \
 	frameworks/base/data/sounds/effects/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
 	frameworks/base/data/sounds/effects/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
 	frameworks/base/data/sounds/effects/VideoStop.ogg:system/media/audio/ui/VideoStop.ogg \
