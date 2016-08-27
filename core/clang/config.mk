@@ -71,6 +71,19 @@ CLANG_CONFIG_EXTRA_CFLAGS += \
 endif
 
 CLANG_CONFIG_UNKNOWN_CFLAGS := \
+  -fira-loop-pressure \
+  -ftree-loop-distribution \
+  -fsection-anchors \
+  -ftree-loop-im \
+  -ftree-loop-ivcanon \
+  -fgraphite \
+  -fgraphite-identity \
+  -floop-flatten \
+  -floop-parallelize-all \
+  -ftree-loop-linear \
+  -floop-interchange \
+  -floop-strip-mine \
+  -floop-block \
   -finline-functions \
   -finline-limit=64 \
   -fno-canonical-system-headers \
