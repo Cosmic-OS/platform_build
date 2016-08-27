@@ -79,11 +79,7 @@ ifdef dumpvar_goals
   absolute_dumpvar := $(strip $(filter abs-%,$(dumpvar_goals)))
   ifdef absolute_dumpvar
     dumpvar_goals := $(patsubst abs-%,%,$(dumpvar_goals))
-    ifneq ($(filter /%,$($(dumpvar_goals))),)
-      DUMPVAR_VALUE := $($(dumpvar_goals))
-    else
-      DUMPVAR_VALUE := $(PWD)/$($(dumpvar_goals))
-    endif
+    DUMPVAR_VALUE := $(abspath $($(dumpvar_goals)))
     dumpvar_target := dumpvar-abs-$(dumpvar_goals)
   else
     DUMPVAR_VALUE := $($(dumpvar_goals))
@@ -100,34 +96,37 @@ ifneq ($(dumpvar_goals),report_config)
 PRINT_BUILD_CONFIG:=
 endif
 
+ifneq ($(filter report_config,$(DUMP_MANY_VARS)),)
+# Construct the shell commands that print the config banner.
+report_config_sh := echo '============================================';
+report_config_sh += $(foreach v,$(print_build_config_vars),echo '$v=$($(v))';)
+report_config_sh += echo '============================================';
+endif
+
+# Dump mulitple variables to "<var>=<value>" pairs, one per line.
+# The output may be executed as bash script.
+# Input variables:
+#   DUMP_MANY_VARS: the list of variable names.
+#   DUMP_VAR_PREFIX: an optional prefix of the variable name added to the output.
+#   DUMP_MANY_ABS_VARS: the list of abs variable names.
+#   DUMP_ABS_VAR_PREFIX: an optional prefix of the abs variable name added to the output.
+.PHONY: dump-many-vars
+dump-many-vars :
+	@$(foreach v, $(filter-out report_config, $(DUMP_MANY_VARS)),\
+	  echo "$(DUMP_VAR_PREFIX)$(v)='$($(v))'";)
+ifneq ($(filter report_config, $(DUMP_MANY_VARS)),)
+	@# Construct a special variable for report_config.
+	@# Escape \` to defer the execution of report_config_sh to preserve the line breaks.
+	@echo "$(DUMP_VAR_PREFIX)report_config=\`$(report_config_sh)\`"
+endif
+	@$(foreach v, $(sort $(DUMP_MANY_ABS_VARS)),\
+	  echo "$(DUMP_ABS_VAR_PREFIX)$(v)='$(abspath $($(v)))'";)
+
 endif # CALLED_FROM_SETUP
 
-HOST_OS_EXTRA:=$(shell python -c "import platform; print(platform.platform())")
+ifneq ($(PRINT_BUILD_CONFIG),)
 $(info ============================================)
-$(info   PLATFORM_VERSION_CODENAME=$(PLATFORM_VERSION_CODENAME))
-$(info   PLATFORM_VERSION=$(PLATFORM_VERSION))
-$(info   TARGET_PRODUCT=$(TARGET_PRODUCT))
-$(info   TARGET_BUILD_VARIANT=$(TARGET_BUILD_VARIANT))
-$(info   TARGET_BUILD_TYPE=$(TARGET_BUILD_TYPE))
-$(info   TARGET_BUILD_APPS=$(TARGET_BUILD_APPS))
-$(info   TARGET_ARCH=$(TARGET_ARCH))
-$(info   TARGET_ARCH_VARIANT=$(TARGET_ARCH_VARIANT))
-$(info   TARGET_CPU_VARIANT=$(TARGET_CPU_VARIANT))
-$(info   TARGET_2ND_ARCH=$(TARGET_2ND_ARCH))
-$(info   TARGET_2ND_ARCH_VARIANT=$(TARGET_2ND_ARCH_VARIANT))
-$(info   TARGET_2ND_CPU_VARIANT=$(TARGET_2ND_CPU_VARIANT))
-$(info   TARGET_GCC_VERSION=$(TARGET_GCC_VERSION))
-$(info   TARGET_NDK_GCC_VERSION=$(TARGET_NDK_GCC_VERSION))
-ifdef TARGET_GCC_VERSION_ARM
-$(info   TARGET_KERNEL_TOOLCHAIN=$(TARGET_GCC_VERSION_ARM))
-else
-$(info   TARGET_KERNEL_TOOLCHAIN=$(TARGET_GCC_VERSION))
-endif
-$(info   HOST_ARCH=$(HOST_ARCH))
-$(info   HOST_OS=$(HOST_OS))
-$(info   HOST_OS_EXTRA=$(HOST_OS_EXTRA))
-$(info   HOST_BUILD_TYPE=$(HOST_BUILD_TYPE))
-$(info   BUILD_ID=$(BUILD_ID))
-$(info   OUT_DIR=$(OUT_DIR))
+$(foreach v, $(print_build_config_vars),\
+  $(info $v=$($(v))))
 $(info ============================================)
 endif
