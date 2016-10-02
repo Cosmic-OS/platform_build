@@ -3,7 +3,7 @@
 print_build_config_vars := \
   PLATFORM_VERSION_CODENAME \
   PLATFORM_VERSION \
-  SLIM_VERSION \
+  COS_VERSION \
   TARGET_PRODUCT \
   TARGET_BUILD_VARIANT \
   TARGET_BUILD_TYPE \
@@ -124,19 +124,4 @@ endif
 
 endif # CALLED_FROM_SETUP
 
-ifneq ($(PRINT_BUILD_CONFIG),)
-$(info |==========================================|)
-$(info |               ___________________________|)
-$(info |              / ______________77777777777_|)
-$(info |             / /              7777777777  |)
-$(info |            / / _ _                7777   |)
-$(info |           / / | (_)              7777    |)
-$(info |          / /  | |_ _ __ ___     7777     |)
-$(info |         / /   | | | '_ ` _ \   7777      |)
-$(info |________/ /    | | | | | | | | 7777       |)
-$(info |_________/     |_|_|_| |_| |_|7777        |)
-$(info |==========================================|)
-$(foreach v, $(print_build_config_vars),\
-  $(info $v=$($(v))))
-$(info ============================================)
-endif
+
