@@ -382,6 +382,9 @@ endif
 # define clang/llvm versions and base directory.
 include $(BUILD_SYSTEM)/clang/versions.mk
 
+# define sdclang LTO definitions
+include $(BUILD_SYSTEM)/sdllvm-lto-defs.mk
+
 # Disable WITH_STATIC_ANALYZER and WITH_SYNTAX_CHECK if tool can't be found
 SYNTAX_TOOLS_PREFIX := \
     $(LLVM_PREBUILTS_BASE)/$(BUILD_OS)-x86/$(LLVM_PREBUILTS_VERSION)/tools/scan-build/libexec
