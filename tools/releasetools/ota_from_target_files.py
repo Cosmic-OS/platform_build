@@ -668,6 +668,27 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     system_progress -= 0.1
   if HasVendorPartition(input_zip):
     system_progress -= 0.1
+    
+    script.Print("************************************************");
+    script.Print("   _____ ____   _____ ");
+    script.Print("  / ____/ __ \ / ____|");
+    script.Print(" | |   | |  | | (___  ");
+    script.Print(" | |   | |  | |\___ \ ");
+    script.Print(" | |___| |__| |____) |");
+    script.Print("  \_____\____/|_____/ ");  
+    script.Print("************************************************");
+    script.Print("Time to leave this planet Flashing Cosmic OS");
+    script.Print("");
+
+    build = GetBuildProp("ro.build.date", OPTIONS.info_dict)
+    script.Print("******************************************");
+    script.Print("***** Pure AOSP Nougat 7.0  *****");
+    script.Print("******************************************");
+    script.Print("   Compiled On: %s"%(build));
+    device = GetBuildProp("ro.product.device", OPTIONS.info_dict)
+    model = GetBuildProp("ro.product.model", OPTIONS.info_dict)
+    script.Print("*   Compiled For: %s (%s)"%(model, device));
+    script.Print("******************************************"); 
 
   if not OPTIONS.wipe_user_data:
     script.AppendExtra("if is_mounted(\"/data\") then")
