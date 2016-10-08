@@ -550,33 +550,37 @@ function print_lunch_menu()
 {
     local uname=$(uname)
     echo
-    echo "You're building on" $uname
-    if [ "$(uname)" = "Darwin" ] ; then
-       echo "  (ohai, koush!)"
-    fi
-    echo
-    if [ "z${COS_DEVICES_ONLY}" != "z" ]; then
-       echo "Breakfast menu... pick a combo:"
-    else
-       echo "Lunch menu... pick a combo:"
-    fi
+
+   echo ""
+    tput setaf 1;
+    tput bold;
+    echo " ██████╗ ██████╗ ███████╗███╗   ███╗██╗ ██████╗     ██████╗ ███████╗"
+    echo "██╔════╝██╔═══██╗██╔════╝████╗ ████║██║██╔════╝    ██╔═══██╗██╔════╝"
+    echo "██║     ██║   ██║███████╗██╔████╔██║██║██║         ██║   ██║███████╗"
+    echo "██║     ██║   ██║╚════██║██║╚██╔╝██║██║██║         ██║   ██║╚════██║"
+    echo "╚██████╗╚██████╔╝███████║██║ ╚═╝ ██║██║╚██████╗    ╚██████╔╝███████║"
+    echo " ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝╚═╝ ╚═════╝     ╚═════╝ ╚══════╝"
+    tput sgr0;
+    echo ""
+    echo "                  You are going to build Cosmic os                  "
+    echo ""
+    tput bold;
+    echo "                Select a device to compile Cosmic OS                "
+    tput sgr0;
+    echo ""
 
     local i=1
     local choice
     for choice in ${LUNCH_MENU_CHOICES[@]}
     do
-        echo " $i. $choice "
+        echo "     $i. $choice"
         i=$(($i+1))
-    done | column
-
-    if [ "z${COS_DEVICES_ONLY}" != "z" ]; then
-       echo "... and don't forget the bacon!"
-    fi
+    done
 
     echo
-}
-
-function brunch()
+}   
+ 
+ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
