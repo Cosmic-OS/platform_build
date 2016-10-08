@@ -8,6 +8,7 @@ ifneq ($(BUILD_WITH_COLORS),0)
   CL_RED="\033[31m"
   CL_GRN="\033[32m"
   CL_YLW="\033[33m"
+  CL_SLIM="\033[38;5;24m"		
   CL_BLU="\033[34m"
   CL_MAG="\033[35m"
   CL_CYN="\033[36m"
@@ -2149,25 +2150,14 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(COS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(COS_TARGET_PACKAGE) > $(COS_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_CYN}"                                                                        "${CL_CYN}
-        @echo -e ${CL_CYN}" ▄████▄   ▒█████    ██████  ███▄ ▄███▓ ██▓ ▄████▄      ▒█████    ██████ "${CL_CYN}
-	@echo -e ${CL_CYN}"▒██▀ ▀█  ▒██▒  ██▒▒██    ▒ ▓██▒▀█▀ ██▒▓██▒▒██▀ ▀█     ▒██▒  ██▒▒██    ▒ "${CL_CYN}
-	@echo -e ${CL_CYN}"▒▓█    ▄ ▒██░  ██▒░ ▓██▄   ▓██    ▓██░▒██▒▒▓█    ▄    ▒██░  ██▒░ ▓██▄   "${CL_CYN}
-	@echo -e ${CL_CYN}"▒▓▓▄ ▄██▒▒██   ██░  ▒   ██▒▒██    ▒██ ░██░▒▓▓▄ ▄██▒   ▒██   ██░  ▒   ██▒"${CL_CYN}
-	@echo -e ${CL_CYN}"▒ ▓███▀ ░░ ████▓▒░▒██████▒▒▒██▒   ░██▒░██░▒ ▓███▀ ░   ░ ████▓▒░▒██████▒▒"${CL_CYN}
-	@echo -e ${CL_CYN}"░ ░▒ ▒  ░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░░ ▒░   ░  ░░▓  ░ ░▒ ▒  ░   ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░"${CL_CYN}
-	@echo -e ${CL_CYN}"  ░  ▒     ░ ▒ ▒░ ░ ░▒  ░ ░░  ░      ░ ▒ ░  ░  ▒        ░ ▒ ▒░ ░ ░▒  ░ ░"${CL_CYN}
-	@echo -e ${CL_CYN}"░        ░ ░ ░ ▒  ░  ░  ░  ░      ░    ▒ ░░           ░ ░ ░ ▒  ░  ░  ░  "${CL_CYN}
-	@echo -e ${CL_CYN}"░ ░          ░ ░        ░         ░    ░  ░ ░             ░ ░        ░  "${CL_CYN}
-	@echo -e ${CL_CYN}"░                                         ░                             "${CL_CYN}
-	@echo -e ${CL_CYN}"==========-Cosmic OS Package Complete-=========="${CL_RST}                 
-	@echo -e ${CL_CYN}"Zip: "${CL_MAG} $(COS_TARGET_PACKAGE)${CL_RST}
-	@echo -e ${CL_CYN}"MD5: "${CL_MAG}" `cat $(COS_TARGET_PACKAGE).md5sum | cut -d ' ' -f 1`"${CL_RST}
-	@echo -e ${CL_CYN}"Size:"${CL_MAG}" `ls -lah $(COS_TARGET_PACKAGE) | cut -d ' ' -f 5`"${CL_RST}
-	@echo -e ${CL_CYN}"==============================================="${CL_RST}
-       	@echo -e ${CL_CYN}"            Now Flash ROM And Enjoy !          "${CL_RST}
-	@echo -e ${CL_CYN}"==============================================="${CL_RST}
-	@echo -e ""
+	@echo -e ${CL_SLIM}"_________                      .__         ________    _________"${CL_SLIM}
+	@echo -e ${CL_SLIM}"\_   ___ \  ____  ______ _____ |__| ____   \_____  \  /   _____/"${CL_SLIM}
+	@echo -e ${CL_SLIM}"/    \  \/ /  _ \/  ___//     \|  |/ ___\   /   |   \ \_____  \ "${CL_SLIM}
+	@echo -e ${CL_SLIM}"\     \___(  <_> )___ \|  Y Y  \  \  \___  /    |    \/        \"${CL_SLIM}
+	@echo -e ${CL_SLIM}" \______  /\____/____  >__|_|  /__|\___  > \_______  /_______  /"${CL_SLIM}	
+	@echo -e ${CL_SLIM}"        \/           \/      \/        \/          \/        \/ "${CL_SLIM}
+	@echo -e ${CL_CYN}"Package Complete: $(COS_TARGET_PACKAGE)"${CL_RST}
+
 endif    # build_ota_package
 
 # -----------------------------------------------------------------
