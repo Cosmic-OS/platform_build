@@ -2150,12 +2150,6 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(COS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(COS_TARGET_PACKAGE) > $(COS_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_SLIM}"_________                      .__         ________    _________"${CL_SLIM}
-	@echo -e ${CL_SLIM}"\_   ___ \  ____  ______ _____ |__| ____   \_____  \  /   _____/"${CL_SLIM}
-	@echo -e ${CL_SLIM}"/    \  \/ /  _ \/  ___//     \|  |/ ___\   /   |   \ \_____  \ "${CL_SLIM}
-	@echo -e ${CL_SLIM}"\     \___(  <_> )___ \|  Y Y  \  \  \___  /    |    \/        \"${CL_SLIM}
-	@echo -e ${CL_SLIM}" \______  /\____/____  >__|_|  /__|\___  > \_______  /_______  /"${CL_SLIM}	
-	@echo -e ${CL_SLIM}"        \/           \/      \/        \/          \/        \/ "${CL_SLIM}
 	@echo -e ${CL_CYN}"Package Complete: $(COS_TARGET_PACKAGE)"${CL_RST}
 
 endif    # build_ota_package
