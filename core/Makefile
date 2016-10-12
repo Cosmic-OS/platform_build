@@ -2144,6 +2144,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(COS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(COS_TARGET_PACKAGE) > $(COS_TARGET_PACKAGE).md5sum
+        @echo -e ""
 	@echo -e ${CL_CYN}" ██████╗ ██████╗ ███████╗███╗   ███╗██╗ ██████╗     ██████╗ ███████╗"${CL_CYN}
 	@echo -e ${CL_CYN}"██╔════╝██╔═══██╗██╔════╝████╗ ████║██║██╔════╝    ██╔═══██╗██╔════╝"${CL_CYN}
 	@echo -e ${CL_CYN}"██║     ██║   ██║███████╗██╔████╔██║██║██║         ██║   ██║███████╗"${CL_CYN}
