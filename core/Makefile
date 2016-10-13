@@ -2144,20 +2144,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(COS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(COS_TARGET_PACKAGE) > $(COS_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_CYN}" ██████╗ ██████╗ ███████╗███╗   ███╗██╗ ██████╗     ██████╗ ███████╗"${CL_CYN}
-	@echo -e ${CL_CYN}"██╔════╝██╔═══██╗██╔════╝████╗ ████║██║██╔════╝    ██╔═══██╗██╔════╝"${CL_CYN}
-	@echo -e ${CL_CYN}"██║     ██║   ██║███████╗██╔████╔██║██║██║         ██║   ██║███████╗"${CL_CYN}
-	@echo -e ${CL_CYN}"██║     ██║   ██║╚════██║██║╚██╔╝██║██║██║         ██║   ██║╚════██║"${CL_CYN}
-	@echo -e ${CL_CYN}"╚██████╗╚██████╔╝███████║██║ ╚═╝ ██║██║╚██████╗    ╚██████╔╝███████║"${CL_CYN}
-	@echo -e ${CL_CYN}" ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝╚═╝ ╚═════╝     ╚═════╝ ╚══════╝"${CL_CYN}
-	@echo -e ${CL_CYN}"===========Cosmic OS Package Complete-==========="${CL_RST}
-	@echo -e ${CL_CYN}"Zip: "${CL_MAG} $(COS_TARGET_PACKAGE)${CL_RST}
-	@echo -e ${CL_CYN}"MD5: "${CL_MAG}" `cat $(COS_TARGET_PACKAGE).md5sum | cut -d ' ' -f 1`"${CL_RST}
-	@echo -e ${CL_CYN}"Size:"${CL_MAG}" `ls -lah $(COS_TARGET_PACKAGE) | cut -d ' ' -f 5`"${CL_RST}
-	@echo -e ${CL_CYN}"==============================================="${CL_RST}
-	@echo -e ${CL_CYN}"Now Flash ROM And Enjoy"${CL_RST}
-	@echo -e ${CL_CYN}"==============================================="${CL_RST}
-	@echo -e ""
+	@echo -e ${CL_CYN}"Package Complete: $(COS_TARGET_PACKAGE)"${CL_RST}
 
 endif    # build_ota_package
 
