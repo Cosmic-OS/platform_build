@@ -22,6 +22,11 @@
 PRODUCT_PACKAGES := \
     libfwdlockengine \
     WAPPushManager
+	
+# Additional settings used in all AOSP builds
+  PRODUCT_PROPERTY_OVERRIDES := \
+    ro.config.ringtone=Titania.ogg \
+    ro.config.notification_sound=Tethys.ogg
 
 # Additional settings used in all AOSP builds
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -37,7 +42,7 @@ PRODUCT_COPY_FILES += \
     build/make/tools/install/backuptool.sh:install/bin/backuptool.sh
 
 # Get some sounds
-$(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/GoogleAudio.mk)
 
 # Get a list of languages.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/locales_full.mk)
