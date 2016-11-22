@@ -597,7 +597,7 @@ function include_vendorsetup()
 {
     for f in `/usr/bin/find $(gettop) -name vendorsetup.sh 2> /dev/null`
         do
-            echo "including $f"
+            echo "including ${f:${#ANDROID_BUILD_TOP}+1}"
             . $f
         done
     unset f
