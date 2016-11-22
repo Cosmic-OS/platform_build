@@ -569,6 +569,7 @@ function print_lunch_menu()
     tput sgr0;
     echo ""
 
+    include_vendorsetup
     local i=1
     local choice
     for choice in ${LUNCH_MENU_CHOICES[@]}
@@ -578,8 +579,8 @@ function print_lunch_menu()
     done
 
     echo
-}   
- 
+}
+
  function brunch()
 {
     breakfast $*
@@ -592,6 +593,16 @@ function print_lunch_menu()
     return $?
 }
 
+function include_vendorsetup()
+{
+    for f in `/usr/bin/find $(gettop) -name vendorsetup.sh 2> /dev/null`
+        do
+            echo "including $f"
+            . $f
+        done
+    unset f
+}
+
 function breakfast()
 {
     target=$1
@@ -599,12 +610,7 @@ function breakfast()
     COS_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/usr/bin/find $(gettop) -name vendorsetup.sh 2> /dev/null`
-        do
-            echo "including $f"
-            . $f
-        done
-    unset f
+    include_vendorsetup
 
     if [ $# -eq 0 ]; then
         # No arguments, so let's have the full menu
