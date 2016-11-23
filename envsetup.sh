@@ -569,7 +569,6 @@ function print_lunch_menu()
     tput sgr0;
     echo ""
 
-    include_vendorsetup
     local i=1
     local choice
     for choice in ${LUNCH_MENU_CHOICES[@]}
@@ -595,7 +594,7 @@ function print_lunch_menu()
 
 function include_vendorsetup()
 {
-    for f in `/usr/bin/find $(gettop) -name vendorsetup.sh 2> /dev/null`
+    for f in `/usr/bin/find $(gettop)/device/ -name vendorsetup.sh 2> /dev/null`
         do
             echo "including ${f:${#ANDROID_BUILD_TOP}+1}"
             . $f
@@ -2276,3 +2275,4 @@ check_bash_version && {
 }
 
 export ANDROID_BUILD_TOP=$(gettop)
+include_vendorsetup
