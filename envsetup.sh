@@ -560,9 +560,6 @@ function print_lunch_menu()
     echo "██║     ██║   ██║╚════██║██║╚██╔╝██║██║██║         ██║   ██║╚════██║"
     echo "╚██████╗╚██████╔╝███████║██║ ╚═╝ ██║██║╚██████╗    ╚██████╔╝███████║"
     echo " ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝╚═╝ ╚═════╝     ╚═════╝ ╚══════╝"
-    tput sgr0;
-    echo ""
-    echo "                  You are going to build Cosmic os                  "
     echo ""
     tput bold;
     echo "                Select a device to compile Cosmic OS                "
