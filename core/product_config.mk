@@ -181,7 +181,7 @@ include $(BUILD_SYSTEM)/device.mk
 
 # A COS build needs only the COS product makefiles.
 ifneq ($(COS_BUILD),)
-  all_product_configs := $(shell find device -path "*/$(COS_BUILD)/cos.mk)
+  all_product_configs := $(shell find device -path "*/$(COS_BUILD)/cos.mk")
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
