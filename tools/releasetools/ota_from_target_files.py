@@ -769,11 +769,18 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.WriteRawImage("/boot", "boot.img")
 
   if block_based:
-    if os.getenv('EXCLUDE_SUPERSU','false') != 'true' :
+    if os.getenv('EXCLUDE_SUPERSU','false') != 'true':
       script.Print("Flashing SuperSU...")
       common.ZipWriteStr(output_zip, "supersu/supersu.zip",
       ""+input_zip.read("SYSTEM/addon.d/UPDATE-SuperSU.zip"))
       script.FlashSuperSU()
+
+  if block_based:
+    if os.getenv('INCLUDE_MAGISK'):
+      script.Print("Flashing Magisk...")
+      common.ZipWriteStr(output_zip, "magisk/magisk.zip",
+      ""+input_zip.read("SYSTEM/addon.d/Magisk.zip"))
+      script.FlashMagisk()
 
   script.ShowProgress(0.2, 10)
   device_specific.FullOTA_InstallEnd()
