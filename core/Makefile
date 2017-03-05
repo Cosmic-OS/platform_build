@@ -324,7 +324,8 @@ endif
 		$(hide) echo >> $@; \
 		        echo "#" >> $@; \
 		        echo "# ADDITIONAL_BUILD_PROPERTIES" >> $@; \
-		        echo "#" >> $@; )
+		        echo "#" >> $@; \
+		        echo "# modversion this line enables Tasker root support" >> $@; )
 	$(hide) $(foreach line,$(FINAL_BUILD_PROPERTIES), \
 		echo "$(line)" >> $@;)
 	$(hide) cat $(INSTALLED_ANDROID_INFO_TXT_TARGET) | grep 'require version-' | sed -e 's/require version-/ro.build.expect./g' >> $@
