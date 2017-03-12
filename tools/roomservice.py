@@ -42,11 +42,11 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/roomservice.xml"
+custom_local_manifest = ".repo/local_manifests/cosmic_manifest.xml"
 custom_default_revision = "n7.1"
 custom_dependencies = "cos.dependencies"
-org_manifest = "Cosmic-OS"  # leave empty if org is provided in manifest
-org_display = "Cosmic-OS"  # needed for displaying
+org_manifest = "devices"  # leave empty if org is provided in manifest
+org_display = "Cosmic-Devices"  # needed for displaying
 
 github_auth = None
 
@@ -118,6 +118,7 @@ def get_remote(manifest=None, remote_name=None):
             return remote
 
 def get_revision(manifest=None, p="build"):
+    return custom_default_revision
     m = manifest or load_manifest(default_manifest)
     project = None
     for proj in m.findall('project'):
@@ -163,7 +164,6 @@ def add_to_manifest(repos, fallback_branch=None):
 	    repo_branch=repo['branch']
 	else:
 	    repo_branch=custom_default_revision
-
 	if 'remote' in repo:
 	    repo_remote = repo['remote']
 	else:
@@ -335,7 +335,7 @@ def main():
     for repository in repositories:
         repo_name = repository['name']
 
-        if not (repo_name.startswith("device_") and
+        if not (repo_name.startswith("android_device_") and
                 repo_name.endswith("_" + device)):
             continue
         print("Found repository: %s" % repository['name'])
