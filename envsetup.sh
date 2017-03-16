@@ -1748,3 +1748,6 @@ unset f
 addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
+
+# Include OTA functions
+source $(gettop)/vendor/ota/manifest.bash
