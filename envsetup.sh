@@ -686,6 +686,8 @@ function lunch()
     export TARGET_PRODUCT=$product
     export TARGET_BUILD_VARIANT=$variant
     export TARGET_BUILD_TYPE=release
+    export COS_VERSION=$(get_build_var COS_VERSION)
+    export COS_RELEASE=$(get_build_var COS_RELEASE)
 
     echo
 
