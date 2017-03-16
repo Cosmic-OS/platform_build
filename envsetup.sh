@@ -1745,3 +1745,6 @@ addcompletions
 export ANDROID_BUILD_TOP=$(gettop)
 
 . $ANDROID_BUILD_TOP/vendor/cos/build/envsetup.sh
+
+# Include OTA functions
+source $(gettop)/vendor/ota/manifest.bash
