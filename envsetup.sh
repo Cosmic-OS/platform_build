@@ -566,7 +566,6 @@ function print_lunch_menu()
     else
        echo "Lunch menu... pick a combo:"
     fi
-
     local i=1
     local choice
     for choice in ${LUNCH_MENU_CHOICES[@]}
@@ -578,7 +577,6 @@ function print_lunch_menu()
     if [ "z${COS_DEVICES_ONLY}" != "z" ]; then
        echo "... and don't forget the bacon!"
     fi
-
     echo
 }
 
