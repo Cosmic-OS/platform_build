@@ -543,18 +543,23 @@ function add_lunch_combo()
     done
     LUNCH_MENU_CHOICES=(${LUNCH_MENU_CHOICES[@]} $new_combo)
 }
-
-# add the default one here
-add_lunch_combo aosp_arm-eng
-add_lunch_combo aosp_arm64-eng
-add_lunch_combo aosp_mips-eng
-add_lunch_combo aosp_mips64-eng
-add_lunch_combo aosp_x86-eng
-add_lunch_combo aosp_x86_64-eng
-
+function print_cosmic_ascii()
+{
+echo
+echo -e '\033[0;31m $$$$$$\                                    $$\           '
+echo -e '\033[1;31m$$  __$$\                                   \__|          '
+echo -e '\033[0;33m$$ /  \__| $$$$$$\   $$$$$$$\ $$$$$$\$$$$\  $$\  $$$$$$$\ '
+echo -e '\033[0;32m$$ |      $$  __$$\ $$  _____|$$  _$$  _$$\ $$ |$$  _____|'
+echo -e '\033[0;34m$$ |      $$ /  $$ |\$$$$$$\  $$ / $$ / $$ |$$ |$$ /      '
+echo -e '\033[1;35m$$ |  $$\ $$ |  $$ | \____$$\ $$ | $$ | $$ |$$ |$$ |      '
+echo -e '\033[0;35m\$$$$$$  |\$$$$$$  |$$$$$$$  |$$ | $$ | $$ |$$ |\$$$$$$$\ '
+echo -e '\033[0m \______/  \______/ \_______/ \__| \__| \__|\__| \_______|'
+echo
+}
 function print_lunch_menu()
 {
     local uname=$(uname)
+    print_cosmic_ascii
     echo
     echo "You're building on" $uname
     if [ "$(uname)" = "Darwin" ] ; then
@@ -582,6 +587,7 @@ function print_lunch_menu()
 
 function brunch()
 {
+    print_cosmic_ascii
     breakfast $*
     if [ $? -eq 0 ]; then
         mka bacon
@@ -594,6 +600,7 @@ function brunch()
 
 function breakfast()
 {
+    print_cosmic_ascii
     target=$1
     local variant=$2
     COS_DEVICES_ONLY="true"
