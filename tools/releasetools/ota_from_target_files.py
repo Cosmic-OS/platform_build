@@ -840,6 +840,25 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   if HasVendorPartition(input_zip):
     system_progress -= 0.1
 
+  script.Print(" ")
+  script.Print("================================")
+  script.Print("                                ")
+  script.Print("   $$$$$$\   $$$$$$\   $$$$$$\  ")
+  script.Print("  $$  __$$\ $$  __$$\ $$  __$$\ ")
+  script.Print("  $$ /  \__|$$ /  $$ |$$ /  \__|")
+  script.Print("  $$ |      $$ |  $$ |\$$$$$$\  ")
+  script.Print("  $$ |      $$ |  $$ | \____$$\ ")
+  script.Print("  $$ |  $$\ $$ |  $$ |$$\   $$ |")
+  script.Print("  \$$$$$$  | $$$$$$  |\$$$$$$  |")
+  script.Print("   \______/  \______/  \______/ ")
+  script.Print("                                ")
+  script.Print("================================")
+  script.Print("                                ")
+  script.Print("         COSMIC-OS PIE          ")
+  script.Print("                                ")
+  script.Print("================================")
+  script.Print(" ")
+
   script.ShowProgress(system_progress, 0)
 
   # See the notes in WriteBlockIncrementalOTAPackage().
