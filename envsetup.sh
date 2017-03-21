@@ -587,7 +587,6 @@ function print_lunch_menu()
 
 function brunch()
 {
-    print_cosmic_ascii
     breakfast $*
     if [ $? -eq 0 ]; then
         mka bacon
