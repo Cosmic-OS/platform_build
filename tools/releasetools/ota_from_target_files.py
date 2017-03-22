@@ -788,7 +788,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.WriteRawImage("/boot", "boot.img")
 
   if block_based:
-    if os.getenv('EXCLUDE_SUPERSU','false') != 'true':
+    if os.getenv('INCLUDE_SUPERSU'):
       script.Print("Flashing SuperSU...")
       common.ZipWriteStr(output_zip, "supersu/supersu.zip",
       ""+input_zip.read("SYSTEM/addon.d/UPDATE-SuperSU.zip"))
