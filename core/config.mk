@@ -639,9 +639,6 @@ else
   DEFAULT_SYSTEM_DEV_CERTIFICATE := build/target/product/security/testkey
 endif
 
-# Rules for QCOM targets
-include vendor/cm/build/core/qcom_target.mk
-
 # ###############################################################
 # Set up final options.
 # ###############################################################
