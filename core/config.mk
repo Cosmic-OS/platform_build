@@ -640,10 +640,10 @@ else
 endif
 
 # Rules for QCOM targets
-include vendor/aosp/build/core/qcom_target.mk
+include vendor/cos/build/core/qcom_target.mk
 
 # Rules for MTK targets
-include vendor/aosp/build/core/mtk_target.mk
+include vendor/cos/build/core/mtk_target.mk
 
 # ###############################################################
 # Set up final options.
@@ -899,6 +899,6 @@ endif
 
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
-$(eval include vendor/aosp/sepolicy/sepolicy.mk)
+$(eval include vendor/cos/sepolicy/sepolicy.mk)
 
 include $(BUILD_SYSTEM)/dumpvar.mk
