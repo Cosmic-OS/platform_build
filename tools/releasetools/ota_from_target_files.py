@@ -735,9 +735,9 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("   \______/  \______/  \______/ ")
   script.Print("                                ")
   script.Print("================================")
+  script.Print("     Cosmic-OS Android 7.1.2    ")
   script.Print("                                ")
-  script.Print("        COSMIC-OS NOUGAT        ")
-  script.Print("                                ")
+  script.Print("        - by Sagar Shah         ")
   script.Print("================================")
   script.Print(" ")
 
