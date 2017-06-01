@@ -654,7 +654,7 @@ function lunch()
     check_product $product
     if [ $? -ne 0 ]
     then
-        # if we can't find a product, try to grab it off the SLIM github
+        # if we can't find a product, try to grab it off the COS github
         T=$(gettop)
         pushd $T > /dev/null
         build/tools/roomservice.py $product
