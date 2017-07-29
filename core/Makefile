@@ -308,8 +308,6 @@ ifdef INSTALLED_RECOVERYIMAGE_TARGET
 	$(hide) echo ro.expect.recovery_id=`cat $(RECOVERYIMAGE_ID_FILE)` >> $@
 endif
 
-# ----------------------------------------------------------------
-
 # -----------------------------------------------------------------
 # vendor build.prop
 #
@@ -323,7 +321,7 @@ $(INSTALLED_VENDOR_BUILD_PROP_TARGET): $(INSTALLED_BUILD_PROP_TARGET)
 	$(hide) echo > $@
 	$(hide) echo ro.vendor.build.date=`date`>>$@
 	$(hide) echo ro.vendor.build.date.utc=`date +%s`>>$@
-	$(hide) echo ro.vendor.build.fingerprint="$(BUILD_FINGERPRINT)">>$@
+	$(hide) echo ro.vendor.build.fingerprint="$(TARGET_VENDOR_FINGERPRINT_OVERRIDE)">>$@
 endif
 
 # -----------------------------------------------------------------
