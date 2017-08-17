@@ -1248,9 +1248,18 @@ ifneq ($(wildcard device/cosmic/sepolicy/common/sepolicy.mk),)
 ## last, to avoid accidental resetting by device configs
 $(eval include device/cosmic/sepolicy/common/sepolicy.mk)
 endif
-endif
 
 # Include any vendor specific config.mk file
 -include vendor/*/build/core/config.mk
+
+# Include any vendor specific apicheck.mk file
+-include $(TOPDIR)vendor/*/build/core/apicheck.mk
+
+# Rules for QCOM targets
+-include $(TOPDIR)vendor/*/build/core/qcom_target.mk
+
+# Rules for MTK targets
+-include $(TOPDIR)vendor/*/build/core/mtk_target.mk
+endif
 
 include $(BUILD_SYSTEM)/dumpvar.mk
