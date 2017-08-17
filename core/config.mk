@@ -1103,6 +1103,11 @@ $(eval include device/cosmic/sepolicy/common/sepolicy.mk)
 # Include any vendor specific config.mk file
 include $(TOPDIR)vendor/cos/build/core/config.mk
 
+# Rules for QCOM targets
+-include $(TOPDIR)vendor/cos/build/core/qcom_target.mk
+
+# Rules for MTK targets
+-include $(TOPDIR)vendor/cos/build/core/mtk_target.mk
 endif
 
 include $(BUILD_SYSTEM)/dumpvar.mk
