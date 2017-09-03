@@ -17,8 +17,7 @@ print_build_config_vars += \
 endif
 
 print_build_config_vars += \
-  BUILD_ID \
-  AUX_OS_VARIANT_LIST
+  BUILD_ID
 
 ifeq ($(TARGET_BUILD_PDK),true)
 print_build_config_vars += \
