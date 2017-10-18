@@ -26,11 +26,6 @@ PRODUCT_PACKAGES := \
     libWnnJpnDic \
     libwnndict \
     WAPPushManager
-	
-# Additional settings used in all AOSP builds
-  PRODUCT_PROPERTY_OVERRIDES := \
-    ro.config.ringtone=Titania.ogg \
-    ro.config.notification_sound=Tethys.ogg
 
 PRODUCT_PACKAGES += \
     Galaxy4 \
@@ -56,7 +51,7 @@ PRODUCT_COPY_FILES += \
     build/make/tools/install/backuptool.sh:install/bin/backuptool.sh
 
 # Get some sounds
-$(call inherit-product-if-exists, frameworks/base/data/sounds/GoogleAudio.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
 
 # Get the TTS language packs
 $(call inherit-product-if-exists, external/svox/pico/lang/all_pico_languages.mk)
