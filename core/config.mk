@@ -960,6 +960,8 @@ dont_bother_goals := out \
 
 ifndef KATI
 include $(BUILD_SYSTEM)/ninja_config.mk
+include $(BUILD_SYSTEM)/soong_config.mk
+endif
 
 # Rules for QCOM targets
 -include $(TOPDIR)vendor/cos/build/core/qcom_target.mk
