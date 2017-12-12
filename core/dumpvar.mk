@@ -1,7 +1,7 @@
 
 # List of variables we want to print in the build banner.
 print_build_config_vars := \
-  PLATFORM_VERSION_CODENAME \
+  COSMIC_VERSION_CODENAME \
   PLATFORM_VERSION \
   COS_VERSION \
   TARGET_PRODUCT \
