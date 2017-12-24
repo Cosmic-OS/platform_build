@@ -41,8 +41,8 @@ except ImportError:
 
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
-cosmic_manifest = ".repo/manifests/cosmic-os.xml"
-hals_manifest = ".repo/manifests/hals.xml"
+cosmic_manifest = ".repo/manifests/manifests/cosmic-os.xml"
+hals_manifest = ".repo/manifests/manifests/hals.xml"
 custom_local_manifest = ".repo/local_manifests/cosmic_manifest.xml"
 custom_default_revision = "oreo-mr1"
 custom_dependencies = "cos.dependencies"
