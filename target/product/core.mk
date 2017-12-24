@@ -38,6 +38,7 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     ExternalStorageProvider \
     FusedLocation \
+    Gallery2 \
     InputDevices \
     KeyChain \
     Keyguard \
