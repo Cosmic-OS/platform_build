@@ -616,11 +616,11 @@ function lunch()
         # if we can't find a product, try to grab it off the SLIM github
         T=$(gettop)
         pushd $T > /dev/null
-        build/tools/roomservice.py $product
+        build/make/tools/roomservice.py $product
         popd > /dev/null
         check_product $product
     else
-        build/tools/roomservice.py $product true
+        build/make/tools/roomservice.py $product true
     fi
     if [ $? -ne 0 ]
     then
