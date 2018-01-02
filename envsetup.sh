@@ -620,7 +620,11 @@ function lunch()
     then
         if [ $answer -le ${#LUNCH_MENU_CHOICES[@]} ]
         then
-            selection=${LUNCH_MENU_CHOICES[$(($answer-$_arrayoffset))]}
+            if [ "$(__detect_shell)" == "zsh" ]; then
+                selection=${LUNCH_MENU_CHOICES[$(($answer))]}
+            else
+                selection=${LUNCH_MENU_CHOICES[$(($answer-1))]}
+            fi
         fi
     else
         selection=$answer
