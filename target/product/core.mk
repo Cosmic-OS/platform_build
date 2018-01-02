@@ -53,6 +53,7 @@ PRODUCT_PACKAGES += \
     PrintRecommendationService \
     ProxyHandler \
     Settings \
+    SettingsBlackThemeOverlay \
     SettingsDarkThemeOverlay \
     SharedStorageBackup \
     StorageManager \
