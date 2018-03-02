@@ -93,6 +93,4 @@ FRAMEWORKS_BASE_SUBDIRS := \
 FRAMEWORKS_BASE_JAVA_SRC_DIRS := \
 	$(addprefix frameworks/base/,$(FRAMEWORKS_BASE_SUBDIRS))
 
-ifneq ($(COS_BUILD),)
 -include $(TOPDIR)vendor/cos/build/core/pathmap.mk
-endif
