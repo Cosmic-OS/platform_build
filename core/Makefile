@@ -130,9 +130,7 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
 	        echo "#" >> $@;
 	$(hide) echo ro.bootimage.build.date=`$(DATE_FROM_FILE)`>>$@
 	$(hide) echo ro.bootimage.build.date.utc=`$(DATE_FROM_FILE) +%s`>>$@
-ifndef skip_fingerprint_from_file
 	$(hide) echo ro.bootimage.build.fingerprint="$(BUILD_FINGERPRINT_FROM_FILE)">>$@
-endif
 	$(hide) build/tools/post_process_props.py $@
 ifdef property_overrides_split_enabled
 	$(hide) mkdir -p $(TARGET_ROOT_OUT)
