@@ -42,7 +42,7 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 cosmic_manifest = ".repo/manifests/manifests/cosmic-os.xml"
-hals_manifest = ".repo/manifests/manifests/hals.xml"
+lineage_manifest = ".repo/manifests/manifests/lineage.xml"
 custom_local_manifest = ".repo/local_manifests/cosmic_manifest.xml"
 custom_default_revision = "oreo-mr1"
 custom_dependencies = "cos.dependencies"
@@ -167,7 +167,7 @@ def add_to_manifest(repos, fallback_branch=None):
     lm = load_manifest(custom_local_manifest)
     mlm = load_manifest(default_manifest)
     cosm = load_manifest(cosmic_manifest)
-    halm = load_manifest(hals_manifest)
+    lineagem = load_manifest(lineage_manifest)
 
     for repo in repos:
         repo_name = repo['repository']
@@ -196,8 +196,8 @@ def add_to_manifest(repos, fallback_branch=None):
 	    existing_m_project = exists_in_tree(mlm, repo_target)
         elif exists_in_tree(cosm, repo_target) != None:
 	    existing_m_project = exists_in_tree(cosm, repo_target)
-        elif exists_in_tree(halm, repo_target) != None:
-	    existing_m_project = exists_in_tree(halm, repo_target)
+        elif exists_in_tree(lineagem, repo_target) != None:
+	    existing_m_project = exists_in_tree(lineagem, repo_target)
 
         if existing_m_project != None:
             if existing_m_project.attrib['path'] == repo['target_path']:
