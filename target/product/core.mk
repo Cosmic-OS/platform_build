@@ -52,7 +52,6 @@ PRODUCT_PACKAGES += \
     PrintRecommendationService \
     ProxyHandler \
     Settings \
-    SettingsBlackThemeOverlay \
     SharedStorageBackup \
     StorageManager \
     SubstratumService \

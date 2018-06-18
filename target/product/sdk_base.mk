@@ -45,7 +45,6 @@ PRODUCT_PACKAGES := \
 	SoftKeyboard \
 	sqlite3 \
 	SystemUI \
-	SystemBlackThemeOverlay \
 	SystemDarkThemeOverlay \
 	EasterEgg \
 	WallpaperPicker \
