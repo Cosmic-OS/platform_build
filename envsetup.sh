@@ -138,11 +138,11 @@ function check_product()
         return
     fi
     if (echo -n $1 | grep -q -e "^cos_") ; then
-        COS_BUILD=$(echo -n $1 | sed -e 's/^cos_//g')
+        COSMIC_BUILD=$(echo -n $1 | sed -e 's/^cos_//g')
     else
-        COS_BUILD=
+        COSMIC_BUILD=
     fi
-    export COS_BUILD
+    export COSMIC_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
